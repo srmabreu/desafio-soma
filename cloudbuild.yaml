@@ -1,0 +1,16 @@
+
+steps:
+- id: 'Rodando testes'
+  name: 'gcr.io/cloud-builders/go'
+  args: ['test', './src']
+
+- name: 'gcr.io/cloud-builders/docker'
+  args:
+  - 'build'
+  - '-t'
+  - 'gcr.io/$PROJECT_ID/desafio-soma:latest'
+  - '.'
+
+images:
+- 'gcr.io/$PROJECT_ID/desafio-soma:latest'
+tags: ['desafioci']
